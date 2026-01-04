@@ -101,14 +101,16 @@ function toggleFaq(btn) {
 
 function openInvitation() {
     const envelope = document.getElementById('envelope');
+    const mainContent = document.getElementById('main-content');
     
-    // 1. Desliza tu imagen de sobre hacia arriba
+    // 1. Quitamos el bloqueo de scroll y mostramos el contenido justo al hacer clic
+    document.body.classList.remove('no-scroll');
+    if (mainContent) mainContent.style.display = 'block';
+
+    // 2. Deslizamos el sobre
     envelope.classList.add('open');
     
-    // 2. Permite el scroll en la invitación
-    document.body.classList.remove('no-scroll');
-    
-    // 3. Inicia el video de fondo automáticamente
+    // 3. Iniciamos el video
     const video = document.querySelector('.hero-video');
     if (video) {
         video.play();

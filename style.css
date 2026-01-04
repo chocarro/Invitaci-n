@@ -36,19 +36,36 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    /* Usamos tu imagen específica */
+    /* Utilizamos dvh para ajustar dinámicamente según las barras del navegador móvil */
+    height: 100vh; 
+    height: 100dvh; 
+    
     background: url('sobre.jpg') center center no-repeat;
     background-size: cover; 
-    z-index: 9999; /* Por encima de todo */
-    cursor: pointer;
+    
+    /* Aseguramos que nada sobresalga */
+    z-index: 9999;
+    overflow: hidden;
+    
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Texto en la parte inferior */
+    align-items: flex-end;
     padding-bottom: 50px;
+    
     transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+    
+    /* Evita que se vea contenido debajo en el rebote del scroll */
+    will-change: transform;
 }
 
+/* Forzamos que el contenido inferior esté oculto hasta que se abra el sobre */
+body.no-scroll #main-content {
+    display: none;
+}
+
+body:not(.no-scroll) #main-content {
+    display: block;
+}
 /* Cuando se abre, se desliza hacia arriba */
 .envelope-full.open {
     transform: translateY(-100vh);
