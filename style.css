@@ -479,7 +479,7 @@ body:not(.no-scroll) #main-content {
 
 /* Mejora para el título del Hero (sobre la imagen) */
 .hero .nombres {
-    font-size: clamp(4rem, 15vw, 7rem); /* Un poco más grande */
+font-size: clamp(2.5rem, 10vw, 4.5rem);
     color: #ffffff; /* Blanco para contrastar con el fondo */
     filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
 }
