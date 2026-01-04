@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nuestra Boda | Invitación</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Great+Vibes&family=Montserrat:wght@200;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="no-scroll">
+
+<div id="envelope" class="envelope-full" onclick="openInvitation()">
+    <div class="envelope-overlay">
+        <p class="tap-hint">Toca para abrir</p>
+    </div>
+</div>
+
+    <main id="main-content">
+
+        <section class="hero">
+            <video autoplay muted loop playsinline class="hero-video">
+        <source src="Portada.mov" type="video/mp4">
+    </video>
+
+            <div class="hero-overlay">
+                <h1 class="nombres">Sara & Manuel</h1>
+                <h2 class="fecha-destacada"><b>15 . NOVIEMBRE . 2026</b></h2>
+
+            </div>
+        </section>
+
+
+
+        <section class="reveal section-padding">
+            <h2 class="titulo-elegante">Faltan tan solo...</h2>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span id="days">00</span>
+                    <p>Días</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <p>Hs</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <p>Min</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <p>Seg</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator">
+            <div class="line"></div>
+            <div class="diamond"></div>
+            <div class="line"></div>
+        </div>
+
+        <section class="reveal section-padding">
+            <div class="info-card">
+                <h3>Localización</h3>
+                <br>
+                <p><strong>Finca Navafría</strong></p>
+                <br>
+
+                <div class="hora-llegada">
+                    <p>Recepción de invitados: <strong>17:00 Horas</strong></p>
+                </div>
+                <div class="button-group">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Finca+Navafría+Fuente+del+Maestre"
+                        target="_blank" class="btn-action btn-maps">
+                        Ver en Google Maps
+                    </a>
+                    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Boda+Ana+y+Luis&dates=20261115T173000Z/20261116T040000Z&details=¡Nos+casamos!+Te+esperamos+en+Finca+Navafría.&location=Finca+Navafría,+Fuente+del+Maestre,+Badajoz"
+                        target="_blank" class="btn-action btn-calendar">
+                        Añadir al Calendario
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator">
+            <div class="line"></div>
+            <div class="diamond"></div>
+            <div class="line"></div>
+        </div>
+
+        <section class="reveal section-padding">
+            <h2 class="titulo-elegante">Programa del Día</h2>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="time-box">17:30</div>
+                    <div class="timeline-content">
+                        <h4>Ceremonia</h4>
+                        <p>El momento del "Sí, quiero" en los jardines.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-box">19:00</div>
+                    <div class="timeline-content">
+                        <h4>Cóctel de Bienvenida</h4>
+                        <p>Brindis y aperitivos para celebrar.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-box">21:00</div>
+                    <div class="timeline-content">
+                        <h4>Banquete</h4>
+                        <p>Cena en el salón principal de la finca.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="time-box">23:30</div>
+                    <div class="timeline-content">
+                        <h4>Fiesta y Barra Libre</h4>
+                        <p>¡A bailar hasta que el cuerpo aguante!</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="separator">
+            <div class="line"></div>
+            <div class="diamond"></div>
+            <div class="line"></div>
+        </div>
+
+        <section class="reveal section-padding">
+            <h2 class="titulo-elegante">Preguntas Frecuentes</h2>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        ¿Hay código de vestimenta? <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nos encantaría que nos acompañaras con un estilo formal/elegante.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        ¿Puedo llevar acompañante? <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>En tu invitación de WhatsApp te indicamos el número de plazas reservadas para ti.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        ¿Hay zona de aparcamiento? <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sí, la Finca Navafría cuenta con un amplio parking privado y gratuito para todos nuestros
+                            invitados dentro del recinto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator">
+            <div class="line"></div>
+            <div class="diamond"></div>
+            <div class="line"></div>
+        </div>
+
+
+        <section class="reveal section-padding">
+            <div class="diet-card">
+                <div class="diet-icon"></div>
+                <h2 class="titulo-elegante" style="font-size: 2.5rem;">Menú Especial</h2>
+                <p class="frase-hero" style="color: var(--oscuro);">
+                    Queremos que disfrutes al máximo de la cena. Si tienes alguna alergia o intolerancia, por favor
+                    háznoslo saber.
+                </p>
+                <a href="https://wa.me/34600000000?text=¡Hola!+Quería+avisar+que+tengo+una+alergia/dieta+especial:"
+                    class="btn-diet">
+                    AVISAR DE ALERGIA
+                </a>
+            </div>
+        </section>
+
+        <div class="separator">
+            <div class="line"></div>
+            <div class="diamond"></div>
+            <div class="line"></div>
+        </div>
+
+
+     <section class="reveal section-padding rsvp-section">
+    <h2 class="titulo-elegante">Confirmación</h2>
+    <p>¿Nos acompañas en este día?</p>
+    <p>Por favor, confirma antes del 1 de octubre.</p>
+    <br>
+    <a href="https://wa.me/34600000000?text=¡Hola!+Confirmo+mi+asistencia" class="btn-action btn-confirmar">
+        CONFIRMAR POR WHATSAPP
+    </a>
+</section>
+
+    </main>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

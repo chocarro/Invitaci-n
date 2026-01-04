@@ -1,0 +1,501 @@
+/* =========================================
+   1. VARIABLES Y CONFIGURACIÓN BASE
+   ========================================= */
+:root {
+    --oro: #b89a5b;
+    --crema: #fdfaf6;
+    --oscuro: #333;
+    --blanco: #ffffff;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--crema);
+    color: var(--oscuro);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.no-scroll { 
+    overflow: hidden; 
+    height: 100vh; 
+}
+
+/* =========================================
+   2. SOBRE DE APERTURA (ENVELOPE)
+   ========================================= */
+/* Contenedor del sobre a pantalla completa */
+.envelope-full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* Usamos tu imagen específica */
+    background: url('sobre.jpg') center center no-repeat;
+    background-size: cover; 
+    z-index: 9999; /* Por encima de todo */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Texto en la parte inferior */
+    padding-bottom: 50px;
+    transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* Cuando se abre, se desliza hacia arriba */
+.envelope-full.open {
+    transform: translateY(-100vh);
+}
+
+/* Texto de ayuda sobre tu imagen */
+.tap-hint {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    color: #b89a5b; /* Color oro de tu diseño */
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.6); /* Fondo semi-transparente para lectura */
+    padding: 10px 20px;
+    border-radius: 30px;
+    animation: pulse-hint 2s infinite;
+}
+
+@keyframes pulse-hint {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* =========================================
+   3. SECCIÓN HERO (PORTADA)
+   ========================================= */
+.hero {
+    position: relative; /* Necesario para posicionar el video y el texto */
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    overflow: hidden; /* Evita que el video sobresalga */
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que el video actúe como "cover" de imagen */
+    z-index: -1; /* Lo coloca detrás de todo */
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 1; /* Asegura que el texto esté sobre el video */
+    background: rgba(0, 0, 0, 0.3); /* Capa oscura manual sobre el video */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.nombres {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(3.5rem, 12vw, 6rem);
+    color: var(--oro);
+    margin-bottom: 10px;
+}
+
+.fecha-destacada {
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
+    letter-spacing: 4px;
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+
+.scroll-hint {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+/* Frases y Textos Elegantes */
+.texto-central, .frase-hero {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--oscuro);
+    max-width: 80%;
+    margin: 15px auto;
+    letter-spacing: 0.5px;
+    opacity: 0.85;
+    text-align: center;
+}
+
+.hero .frase-hero {
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    max-width: 450px;
+}
+
+/* =========================================
+   4. COMPONENTES COMUNES (TARJETAS Y SECCIONES)
+   ========================================= */
+.section-padding {
+    padding: 40px 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.titulo-elegante {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    color: var(--oro);
+    margin-bottom: 25px;
+}
+
+.info-card, .diet-card {
+    background: var(--blanco);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin: 0 auto;
+}
+
+.info-card {
+    padding: 40px 20px;
+    border: 1px solid #f2f2f2;
+}
+
+.diet-card {
+    border: 1px solid rgba(184, 154, 91, 0.2);
+    padding: 40px 25px;
+    max-width: 450px;
+    position: relative;
+    overflow: hidden;
+}
+
+.diet-card::before {
+    content: "";
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 80px; height: 80px;
+    background: var(--crema);
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+/* =========================================
+   5. BOTONES Y ACCIONES
+   ========================================= */
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Base para todos los botones */
+.btn-action, .btn-diet {
+    text-decoration: none;
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: 0.3s transform, 0.3s box-shadow, 0.3s background;
+    display: block;
+    max-width: 280px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Estilo Dorado (Fondo Oro, Texto Blanco) 
+   Se aplica a Maps y ahora también a Confirmación */
+.btn-maps, .btn-confirmar { 
+    background: var(--oro); 
+    color: var(--blanco) !important; 
+    border: none;
+}
+
+/* Estilo Blanco (Fondo Blanco, Borde Oro) */
+.btn-calendar { 
+    background: var(--blanco); 
+    color: var(--oro); 
+    border: 1px solid var(--oro); 
+}
+
+/* Botón de Dietas/Alergias sutil */
+.btn-diet { 
+    border: 1px solid var(--oro); 
+    color: var(--oro); 
+    font-size: 0.8rem; 
+    margin-top: 15px;
+}
+
+/* Hovers y Efectos */
+.btn-diet:hover, .btn-calendar:hover { 
+    background: var(--oro); 
+    color: var(--blanco); 
+}
+
+.btn-action:active { 
+    transform: scale(0.96); 
+}
+/* =========================================
+   6. FUNCIONALIDADES (CONTADOR, FAQ, TIMELINE)
+   ========================================= */
+
+/* Cuenta Atrás */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.countdown-item {
+    background: var(--blanco);
+    padding: 15px;
+    border-radius: 12px;
+    min-width: 75px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-bottom: 3px solid var(--oro);
+}
+
+.countdown-item span {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--oro);
+    display: block;
+}
+
+.countdown-item p {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 400px;
+    margin: 40px auto;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 45px; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--oro);
+    opacity: 0.3;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 21px; top: 15px;
+    width: 10px; height: 10px;
+    background: var(--oro);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.time-box {
+    min-width: 60px;
+    font-weight: 600;
+    color: var(--oro);
+    font-size: 0.9rem;
+    margin-right: 30px;
+    z-index: 2;
+    background: var(--crema);
+}
+
+.timeline-content h4 { font-size: 1.1rem; margin-bottom: 5px; }
+.timeline-content p { font-size: 0.85rem; color: #666; line-height: 1.4; }
+
+/* FAQ */
+.faq-container { max-width: 500px; margin: 0 auto; text-align: left; }
+.faq-item { border-bottom: 1px solid rgba(184, 154, 91, 0.3); margin-bottom: 10px; }
+.faq-question {
+    width: 100%; padding: 20px 10px; background: none; border: none;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Montserrat', sans-serif; font-size: 1rem; color: var(--oscuro); cursor: pointer;
+}
+
+.faq-question span { font-size: 1.2rem; color: var(--oro); transition: transform 0.3s; }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+.faq-answer p { padding: 0 10px 20px 10px; font-size: 0.9rem; color: #666; line-height: 1.5; }
+.faq-item.active span { transform: rotate(45deg); color: var(--oscuro); }
+.faq-item.active .faq-answer { max-height: 200px; }
+
+/* =========================================
+   7. ELEMENTOS DE DISEÑO (SEPARADORES)
+   ========================================= */
+.separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 30px auto;
+    opacity: 0.8;
+}
+
+.line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--oscuro));
+}
+
+.line:last-child {
+    background: linear-gradient(to left, transparent, var(--oscuro));
+}
+
+.diamond {
+    width: 12px; height: 12px;
+    background-color: var(--oscuro);
+    transform: rotate(45deg);
+    margin: 0 10px;
+    flex-shrink: 0;
+}
+
+/* =========================================
+   8. ANIMACIONES Y RESPONSIVE
+   ========================================= */
+
+/* Scroll Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Variaciones de Animación */
+.info-card.reveal, .diet-card.reveal { transform: scale(0.9) translateY(40px); }
+.info-card.reveal.active, .diet-card.reveal.active { transform: scale(1) translateY(0); }
+
+.separator.reveal { transform: scaleX(0); transition: transform 1.5s ease-out, opacity 1s ease-out; }
+.separator.reveal.active { transform: scaleX(1); opacity: 0.8; }
+
+.timeline-item { opacity: 0; transform: translateX(-30px); transition: all 0.8s ease-out; }
+.reveal.active .timeline-item { opacity: 1; transform: translateX(0); }
+
+/* Timeline Delays */
+.timeline-item:nth-child(1) { transition-delay: 0.2s; }
+.timeline-item:nth-child(2) { transition-delay: 0.4s; }
+.timeline-item:nth-child(3) { transition-delay: 0.6s; }
+.timeline-item:nth-child(4) { transition-delay: 0.8s; }
+
+/* Keyframes */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .section-padding { padding: 100px 40px; }
+    .button-group { flex-direction: row; justify-content: center; }
+    .btn-action { margin: 0; flex: 1; }
+    .info-card { padding: 50px; }
+}
+
+@media (max-width: 400px) {
+    .countdown-container { gap: 8px; }
+    .countdown-item { min-width: 65px; padding: 10px 5px; }
+}
+
+
+.nombres-resaltados {
+    font-family: 'Great Vibes', cursive;
+    color: var(--oro);
+    /* Sombra sutil para dar profundidad */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+    /* Un poco de espacio extra entre letras para elegancia */
+    letter-spacing: 2px;
+    /* Animación de brillo sutil */
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+/* Animación de brillo para que el dorado "viva" */
+@keyframes glow {
+    from {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    to {
+        text-shadow: 0 0 10px rgba(184, 154, 91, 0.4), 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Mejora para el título del Hero (sobre la imagen) */
+.hero .nombres {
+    font-size: clamp(4rem, 15vw, 7rem); /* Un poco más grande */
+    color: #ffffff; /* Blanco para contrastar con el fondo */
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+}
+
+footer {
+    padding-bottom: 60px !important;
+    background-color: var(--crema);
+}
+
+.footer-content {
+    margin-top: 20px;
+}
+
+.nombres-footer {
+    font-family: 'Great Vibes', cursive;
+    color: var(--oro);
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+.fecha-footer {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    font-weight: 300;
+    color: var(--oscuro);
+    margin-bottom: 20px;
+}
+
+.gracias {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    opacity: 0.7;
+    color: var(--oscuro);
+}
